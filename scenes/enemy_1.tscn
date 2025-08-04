@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3lfunw8gf1t"]
+
+[ext_resource type="Script" uid="uid://d3j7ewqnj5hm7" path="res://scripts/enemy_1.gd" id="1_a1412"]
+[ext_resource type="Texture2D" uid="uid://d3tlwi3xdb23t" path="res://sprites/enemy_1.png" id="1_tcmaw"]
+[ext_resource type="AudioStream" uid="uid://s8a2mb0g38oi" path="res://sounds/enemy shooting sound.wav" id="3_ejytf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1412"]
+atlas = ExtResource("1_tcmaw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejytf"]
+atlas = ExtResource("1_tcmaw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq62l"]
+atlas = ExtResource("1_tcmaw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3026"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1412")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejytf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq62l")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1412"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejytf"]
+radius = 20.6155
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejytf"]
+bg_color = Color(1, 0.439216, 0.345098, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq62l"]
+bg_color = Color(0.812689, 0.0691209, 2.88785e-07, 1)
+anti_aliasing = false
+
+[node name="enemy_1" type="Node2D"]
+script = ExtResource("1_a1412")
+
+[node name="enemy_sprite" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_d3026")
+animation = &"shoot"
+autoplay = "idle"
+
+[node name="enemy_1" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_mask = 2
+
+[node name="bullet_dect_shape" type="CollisionShape2D" parent="enemy_1"]
+shape = SubResource("CircleShape2D_a1412")
+
+[node name="move_area" type="Area2D" parent="."]
+
+[node name="turrent_dect_shape" type="CollisionShape2D" parent="move_area"]
+shape = SubResource("CircleShape2D_ejytf")
+
+[node name="shoot_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="enemy_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ejytf")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+offset_left = -15.0
+offset_top = -13.0
+offset_right = -11.0
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ejytf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dq62l")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[connection signal="area_entered" from="enemy_1" to="." method="_on_enemy_1_area_entered"]
+[connection signal="area_entered" from="move_area" to="." method="_on_move_area_area_entered"]
+[connection signal="area_exited" from="move_area" to="." method="_on_move_area_area_exited"]
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

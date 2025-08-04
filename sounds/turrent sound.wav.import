@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mcuy2geefmkn"
+path="res://.godot/imported/turrent sound.wav-3f9420353047d1e5baa56c6c0796a307.sample"
+
+[deps]
+
+source_file="res://sounds/turrent sound.wav"
+dest_files=["res://.godot/imported/turrent sound.wav-3f9420353047d1e5baa56c6c0796a307.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

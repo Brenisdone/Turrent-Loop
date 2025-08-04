@@ -1,0 +1,473 @@
+[gd_scene load_steps=45 format=3 uid="uid://d2oe0vxowtu8x"]
+
+[ext_resource type="Script" uid="uid://crw6a6yn5o3kh" path="res://scripts/turrent.gd" id="1_4wyf3"]
+[ext_resource type="Script" uid="uid://bbhbwmyam2son" path="res://scripts/world.gd" id="1_qfnet"]
+[ext_resource type="Script" uid="uid://b4028ntd47v6a" path="res://scripts/camera_2d.gd" id="2_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://crs8ul164nv7w" path="res://sprites/turret_FACE.png" id="2_k0juu"]
+[ext_resource type="Texture2D" uid="uid://d3yfb5kye8jck" path="res://sprites/turret_BASE.png" id="3_71j4m"]
+[ext_resource type="FontFile" uid="uid://cpm8q4bfo7uh4" path="res://fonts/PixelOperator8.ttf" id="5_i7141"]
+[ext_resource type="FontFile" uid="uid://epnw1hqv2bse" path="res://fonts/PixelOperator8-Bold.ttf" id="6_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://cpg0rir164qbm" path="res://sprites/spritsheet.png" id="7_e3hyu"]
+[ext_resource type="AudioStream" uid="uid://cdqu0a5hwsin3" path="res://sounds/Gears sounds.wav" id="8_4mrxx"]
+[ext_resource type="AudioStream" uid="uid://mcuy2geefmkn" path="res://sounds/turrent sound.wav" id="8_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://cf25pinnjvi4k" path="res://sprites/instruction.png" id="10_w7kh3"]
+[ext_resource type="AudioStream" uid="uid://gmr3tt8e1lc7" path="res://sounds/Brain Empty.wav" id="12_q5onr"]
+[ext_resource type="Texture2D" uid="uid://ctqovvd75wo4f" path="res://sprites/WhatsApp Image 2023-01-05 at 19.59.27.jpg" id="13_jhx03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t5mc"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lakw3"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm21f"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lf6f"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iits"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo54l"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpybi"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctatt"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgqkh"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_munwf"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts3gi"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbtd"]
+atlas = ExtResource("7_e3hyu")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37qwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t5mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lakw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm21f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lf6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iits")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo54l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctatt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_munwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts3gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nbtd")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qfnet"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7kh3"]
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3hyu"]
+bg_color = Color(0.953149, 0.367698, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps8t8"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7141"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mrxx"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r4gi"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7kh3"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3hyu"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5onr"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhx03"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8fc1"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo05s"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dss4m"]
+atlas = ExtResource("2_k0juu")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7141"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps8t8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7141")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mrxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r4gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7kh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3hyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5onr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhx03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8fc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo05s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dss4m")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7141"]
+radius = 101.598
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
+size = Vector2(46, 46)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_qfnet")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(100, -1.74846e-05)
+position_smoothing_enabled = true
+script = ExtResource("2_4mrxx")
+
+[node name="Game_over_canvas" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Game_Over" type="RichTextLabel" parent="Camera2D/Game_over_canvas"]
+z_index = 1
+anchors_preset = -1
+anchor_left = -0.167187
+anchor_top = 0.130556
+anchor_right = 0.692187
+anchor_bottom = 0.747222
+offset_left = 107.0
+offset_top = -47.0
+offset_right = 198.0
+offset_bottom = 89.0
+theme_override_colors/default_color = Color(0.572549, 0.427451, 0.282353, 1)
+theme_override_fonts/normal_font = ExtResource("5_i7141")
+theme_override_fonts/bold_font = ExtResource("6_4mrxx")
+theme_override_font_sizes/normal_font_size = 33
+text = "GAME OVER!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="warning" type="Label" parent="Camera2D/Game_over_canvas"]
+offset_left = 126.0
+offset_top = 322.0
+offset_right = 526.0
+offset_bottom = 345.0
+theme_override_colors/font_color = Color(0.572549, 0.427451, 0.282353, 1)
+theme_override_fonts/font = ExtResource("5_i7141")
+text = "You can't place that there mate!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="Camera2D/Game_over_canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.572549, 0.427451, 0.282353, 1)
+theme_override_fonts/font = ExtResource("5_i7141")
+text = "score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level" type="Label" parent="Camera2D/Game_over_canvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 36.0
+offset_right = 20.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.572549, 0.427451, 0.282353, 1)
+theme_override_fonts/font = ExtResource("5_i7141")
+text = "level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bg" type="ColorRect" parent="Camera2D/Game_over_canvas"]
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 65.0
+offset_bottom = 61.0
+scale = Vector2(14.7639, 8.05398)
+color = Color(0.235294, 0.164706, 0.0941176, 1)
+
+[node name="Camera_area" type="Area2D" parent="Camera2D"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Camera_area"]
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="Turrent_body" type="AnimatableBody2D" parent="."]
+script = ExtResource("1_4wyf3")
+
+[node name="boom" type="AnimatedSprite2D" parent="Turrent_body"]
+z_index = 2
+position = Vector2(99, -37)
+sprite_frames = SubResource("SpriteFrames_37qwj")
+animation = &"boom"
+
+[node name="Turrent_pivot" type="CollisionShape2D" parent="Turrent_body"]
+shape = SubResource("CircleShape2D_qfnet")
+
+[node name="health_bar" type="ProgressBar" parent="Turrent_body/Turrent_pivot"]
+modulate = Color(1, 1, 1, 0.588235)
+offset_left = 64.0
+offset_top = -33.0
+offset_right = 139.0
+offset_bottom = -6.0
+scale = Vector2(1, 0.215)
+theme_override_styles/background = SubResource("StyleBoxFlat_w7kh3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e3hyu")
+value = 100.0
+show_percentage = false
+
+[node name="turrent" type="AnimatedSprite2D" parent="Turrent_body/Turrent_pivot"]
+z_index = 1
+position = Vector2(100, 1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_i7141")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="base" type="Sprite2D" parent="Turrent_body/Turrent_pivot"]
+position = Vector2(100, -2.38419e-07)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_71j4m")
+
+[node name="turrent_area" type="Area2D" parent="Turrent_body/Turrent_pivot"]
+position = Vector2(100, -9.53674e-07)
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turrent_body/Turrent_pivot/turrent_area"]
+position = Vector2(-2, -1.33333)
+shape = SubResource("CircleShape2D_i7141")
+
+[node name="turrent_damage" type="Area2D" parent="Turrent_body/Turrent_pivot"]
+position = Vector2(100, -1.74846e-05)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turrent_body/Turrent_pivot/turrent_damage"]
+shape = SubResource("RectangleShape2D_qfnet")
+
+[node name="turrent_shooting" type="AudioStreamPlayer2D" parent="Turrent_body"]
+stream = ExtResource("8_7r4gi")
+
+[node name="turrent_screeching" type="AudioStreamPlayer2D" parent="Turrent_body"]
+stream = ExtResource("8_4mrxx")
+volume_db = -2.0
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Warning_Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Game_over_Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="instructions" type="Sprite2D" parent="."]
+modulate = Color(0.87451, 0.698039, 0.498039, 0.745098)
+z_index = -2
+position = Vector2(-5, 15)
+texture = ExtResource("10_w7kh3")
+
+[node name="a" type="Label" parent="instructions"]
+offset_left = -46.0
+offset_top = 18.0
+offset_right = 49.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "ANTI-
+CLOCKWISE"
+vertical_alignment = 1
+
+[node name="shoot" type="Label" parent="instructions"]
+offset_left = 8.0
+offset_top = -18.0
+offset_right = 48.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "SHOOT"
+
+[node name="place_path" type="Label" parent="instructions"]
+offset_left = -49.0
+offset_top = 162.0
+offset_right = 20.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "PLACE PATH"
+
+[node name="move_path" type="Label" parent="instructions"]
+offset_left = 15.0
+offset_top = 136.0
+offset_right = 84.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "MOVE PATH"
+
+[node name="build_mode" type="Label" parent="instructions"]
+offset_left = -58.0
+offset_top = 110.0
+offset_right = 11.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "BUILD-MODE"
+
+[node name="switch_path" type="Label" parent="instructions"]
+offset_left = -59.0
+offset_top = -155.0
+offset_right = 57.0
+offset_bottom = -145.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "SWITCH PATH(HOLD)"
+
+[node name="d" type="Label" parent="instructions"]
+offset_left = -18.0
+offset_top = -70.0
+offset_right = 47.0
+offset_bottom = -60.0
+theme_override_colors/font_color = Color(0.654902, 0.615686, 0.564706, 0.733333)
+theme_override_fonts/font = ExtResource("5_i7141")
+theme_override_font_sizes/font_size = 8
+text = "CLOCKWISE"
+
+[node name="background_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_q5onr")
+autoplay = true
+
+[node name="BRU" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(262, 697)
+scale = Vector2(0.0793236, 0.062807)
+texture = ExtResource("13_jhx03")
+
+[node name="Label" type="Label" parent="BRU"]
+offset_left = -327.771
+offset_top = 557.263
+offset_right = -156.771
+offset_bottom = 580.263
+scale = Vector2(3.88865, 3.99425)
+theme_override_font_sizes/font_size = 16
+text = "THANKS FOR PLAYING"
+
+[connection signal="area_exited" from="Camera2D/Camera_area" to="." method="_on_camera_area_area_exited"]
+[connection signal="area_entered" from="Turrent_body/Turrent_pivot/turrent_damage" to="Turrent_body" method="_on_turrent_damage_area_entered"]
+[connection signal="area_exited" from="Turrent_body/Turrent_pivot/turrent_damage" to="Turrent_body" method="_on_turrent_damage_area_exited"]
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Warning_Timer" to="." method="_on_warning_timer_timeout"]
+[connection signal="timeout" from="Game_over_Timer" to="." method="_on_game_over_timer_timeout"]

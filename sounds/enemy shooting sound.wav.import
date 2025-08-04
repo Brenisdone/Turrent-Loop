@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://s8a2mb0g38oi"
+path="res://.godot/imported/enemy shooting sound.wav-e0f1e9e94d3eaf829e6ce74ee1dd42e2.sample"
+
+[deps]
+
+source_file="res://sounds/enemy shooting sound.wav"
+dest_files=["res://.godot/imported/enemy shooting sound.wav-e0f1e9e94d3eaf829e6ce74ee1dd42e2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

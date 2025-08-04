@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://de1n8n08y18v6"]
+
+[ext_resource type="Texture2D" uid="uid://ckl066ikqu5pt" path="res://sprites/annulus.png" id="1_1dods"]
+[ext_resource type="Script" uid="uid://7awrq0q0brmv" path="res://scripts/path.gd" id="2_sqppf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqppf"]
+radius = 11.1803
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvrg6"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtoee"]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lpcp"]
+radius = 11.1803
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gavis"]
+
+[node name="path" type="Node2D"]
+script = ExtResource("2_sqppf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_1dods")
+
+[node name="switch_left" type="Area2D" parent="."]
+position = Vector2(-100, 0)
+disable_mode = 1
+collision_layer = 2
+
+[node name="switch_left_body" type="CollisionShape2D" parent="switch_left"]
+shape = SubResource("CircleShape2D_sqppf")
+
+[node name="switch_right" type="Area2D" parent="."]
+position = Vector2(98, 0)
+collision_layer = 2
+
+[node name="switch_right_body" type="CollisionShape2D" parent="switch_right"]
+shape = SubResource("CircleShape2D_wvrg6")
+
+[node name="switch_up" type="Area2D" parent="."]
+position = Vector2(0, -99)
+collision_layer = 2
+
+[node name="switch_up_body" type="CollisionShape2D" parent="switch_up"]
+shape = SubResource("CircleShape2D_mtoee")
+
+[node name="switch_down" type="Area2D" parent="."]
+position = Vector2(0, 98)
+collision_layer = 2
+
+[node name="switch_down_body" type="CollisionShape2D" parent="switch_down"]
+shape = SubResource("CircleShape2D_1lpcp")
+
+[node name="check" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="check_body" type="CollisionShape2D" parent="check"]
+shape = SubResource("CircleShape2D_gavis")
+
+[connection signal="area_entered" from="switch_left" to="." method="_on_switch_left_area_entered"]
+[connection signal="area_exited" from="switch_left" to="." method="_on_switch_left_area_exited"]
+[connection signal="area_entered" from="switch_right" to="." method="_on_switch_right_area_entered"]
+[connection signal="area_exited" from="switch_right" to="." method="_on_switch_right_area_exited"]
+[connection signal="area_entered" from="switch_up" to="." method="_on_switch_up_area_entered"]
+[connection signal="area_exited" from="switch_up" to="." method="_on_switch_up_area_exited"]
+[connection signal="area_entered" from="switch_down" to="." method="_on_switch_down_area_entered"]
+[connection signal="area_exited" from="switch_down" to="." method="_on_switch_down_area_exited"]
+[connection signal="area_entered" from="check" to="." method="_on_check_area_entered"]
+[connection signal="area_exited" from="check" to="." method="_on_check_area_exited"]
